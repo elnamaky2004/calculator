@@ -21,12 +21,11 @@ The calculator allows the user to store up to 4 matrices or vectors per type (sl
 ---
 
 ## Requirements
-- Python 3.8 or higher
+- Python 3.8 or higher  
 - Optional for colored output: `colorama`
 ```bash
 pip install colorama
 Files
-
 main.py – Main program with interactive menus.
 
 operations.py – Basic arithmetic functions.
@@ -38,20 +37,18 @@ matix.py – Matrix classes (Matrix2x2, Matrix3x3).
 vectors.py – Vector class (Vector) with vector operations.
 
 How to Run
-
 Make sure all files are in the same directory.
 
 Open terminal / command prompt in that directory.
 
 Run the program:
 
+bash
+Copy code
 python main.py
-
-
 Follow the on-screen menu to choose operations.
 
 Usage
-
 Choose a mode:
 
 Basic Calculator
@@ -73,7 +70,6 @@ Perform operations on existing items in slots (A, B, C, D).
 Stay in the mode until choosing Exit to return to the main menu.
 
 Notes
-
 Matrix inverse is only possible for non-singular matrices.
 
 Cross product in 2D returns a scalar, in 3D returns a vector.
@@ -83,5 +79,4 @@ Input is validated to avoid crashes from non-numeric values.
 Results are shown immediately, then program pauses so the user can view the output.
 
 Author
-
-Osama Elnamaky
+Osama Elanamaky

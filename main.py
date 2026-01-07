@@ -3,7 +3,6 @@ from utils import get_num
 from matix import Matrix2x2, Matrix3x3
 from vectors import Vector
 from colorama import Fore, Style
-import sys
 
 def pause():
     input("\nPress Enter to continue...")
@@ -22,7 +21,7 @@ def basic_calculator():
     while True:
         print(f"\n{Fore.YELLOW}--- Basic Calculator ---{Style.RESET_ALL}")
         print("1. Add  2. Subtract  3. Multiply  4. Divide")
-        print("5. Power  6. Root  7. Modulus  8. Back")
+        print("5. Power  6. Root  7. Modulus  8. Exit to Main Menu")
         choice = input("Choose operation: ")
         if choice == '8':
             break
@@ -56,31 +55,34 @@ def create_matrix2x2():
     )
 
 def matrix2x2_menu(matrices):
-    show_slots("Matrix 2x2", matrices, color=Fore.BLUE)
-    slot = choose_slot()
-    print("1. Create / Replace  2. Determinant  3. Transpose  4. Inverse  5. Add with another matrix")
-    op = input("Operation: ")
-    if op == "1":
-        matrices[slot] = create_matrix2x2()
-        print(Fore.GREEN + "Saved." + Style.RESET_ALL)
-    elif matrices[slot] is None:
-        print(Fore.RED + "Matrix not defined." + Style.RESET_ALL)
-    elif op == "2":
-        print(Fore.BLUE, matrices[slot].determinant(), Style.RESET_ALL)
-    elif op == "3":
-        print(Fore.BLUE, matrices[slot].transpose(), Style.RESET_ALL)
-    elif op == "4":
-        try:
-            print(Fore.BLUE, matrices[slot].inverse(), Style.RESET_ALL)
-        except:
-            print(Fore.RED + "Singular matrix" + Style.RESET_ALL)
-    elif op == "5":
+    while True:
         show_slots("Matrix 2x2", matrices, color=Fore.BLUE)
-        slot2 = choose_slot()
-        print(Fore.BLUE, matrices[slot] + matrices[slot2], Style.RESET_ALL)
-    else:
-        print(Fore.RED + "Invalid choice" + Style.RESET_ALL)
-    pause()
+        slot = choose_slot()
+        print("1. Create / Replace  2. Determinant  3. Transpose  4. Inverse  5. Add with another matrix  6. Exit to Main Menu")
+        op = input("Operation: ")
+        if op == "6":
+            break
+        if op == "1":
+            matrices[slot] = create_matrix2x2()
+            print(Fore.GREEN + "Saved." + Style.RESET_ALL)
+        elif matrices[slot] is None:
+            print(Fore.RED + "Matrix not defined." + Style.RESET_ALL)
+        elif op == "2":
+            print(Fore.BLUE, matrices[slot].determinant(), Style.RESET_ALL)
+        elif op == "3":
+            print(Fore.BLUE, matrices[slot].transpose(), Style.RESET_ALL)
+        elif op == "4":
+            try:
+                print(Fore.BLUE, matrices[slot].inverse(), Style.RESET_ALL)
+            except:
+                print(Fore.RED + "Singular matrix" + Style.RESET_ALL)
+        elif op == "5":
+            show_slots("Matrix 2x2", matrices, color=Fore.BLUE)
+            slot2 = choose_slot()
+            print(Fore.BLUE, matrices[slot] + matrices[slot2], Style.RESET_ALL)
+        else:
+            print(Fore.RED + "Invalid choice" + Style.RESET_ALL)
+        pause()
 
 def create_matrix3x3():
     return Matrix3x3(
@@ -90,31 +92,34 @@ def create_matrix3x3():
     )
 
 def matrix3x3_menu(matrices):
-    show_slots("Matrix 3x3", matrices, color=Fore.BLUE)
-    slot = choose_slot()
-    print("1. Create / Replace  2. Determinant  3. Transpose  4. Inverse  5. Add with another matrix")
-    op = input("Operation: ")
-    if op == "1":
-        matrices[slot] = create_matrix3x3()
-        print(Fore.GREEN + "Saved." + Style.RESET_ALL)
-    elif matrices[slot] is None:
-        print(Fore.RED + "Matrix not defined." + Style.RESET_ALL)
-    elif op == "2":
-        print(Fore.BLUE, matrices[slot].determinant(), Style.RESET_ALL)
-    elif op == "3":
-        print(Fore.BLUE, matrices[slot].transpose(), Style.RESET_ALL)
-    elif op == "4":
-        try:
-            print(Fore.BLUE, matrices[slot].inverse(), Style.RESET_ALL)
-        except:
-            print(Fore.RED + "Singular matrix" + Style.RESET_ALL)
-    elif op == "5":
+    while True:
         show_slots("Matrix 3x3", matrices, color=Fore.BLUE)
-        slot2 = choose_slot()
-        print(Fore.BLUE, matrices[slot] + matrices[slot2], Style.RESET_ALL)
-    else:
-        print(Fore.RED + "Invalid choice" + Style.RESET_ALL)
-    pause()
+        slot = choose_slot()
+        print("1. Create / Replace  2. Determinant  3. Transpose  4. Inverse  5. Add with another matrix  6. Exit to Main Menu")
+        op = input("Operation: ")
+        if op == "6":
+            break
+        if op == "1":
+            matrices[slot] = create_matrix3x3()
+            print(Fore.GREEN + "Saved." + Style.RESET_ALL)
+        elif matrices[slot] is None:
+            print(Fore.RED + "Matrix not defined." + Style.RESET_ALL)
+        elif op == "2":
+            print(Fore.BLUE, matrices[slot].determinant(), Style.RESET_ALL)
+        elif op == "3":
+            print(Fore.BLUE, matrices[slot].transpose(), Style.RESET_ALL)
+        elif op == "4":
+            try:
+                print(Fore.BLUE, matrices[slot].inverse(), Style.RESET_ALL)
+            except:
+                print(Fore.RED + "Singular matrix" + Style.RESET_ALL)
+        elif op == "5":
+            show_slots("Matrix 3x3", matrices, color=Fore.BLUE)
+            slot2 = choose_slot()
+            print(Fore.BLUE, matrices[slot] + matrices[slot2], Style.RESET_ALL)
+        else:
+            print(Fore.RED + "Invalid choice" + Style.RESET_ALL)
+        pause()
 
 def create_vector():
     dim = input("Vector dimension (2 or 3): ")
@@ -124,30 +129,33 @@ def create_vector():
         return Vector(get_num("x: "), get_num("y: "), get_num("z: "))
 
 def vector_menu(vectors):
-    show_slots("Vectors", vectors, color=Fore.GREEN)
-    slot = choose_slot()
-    print("1. Create / Replace  2. Magnitude  3. Normalize  4. Dot product  5. Cross product")
-    op = input("Operation: ")
-    if op == "1":
-        vectors[slot] = create_vector()
-        print(Fore.GREEN + "Saved." + Style.RESET_ALL)
-    elif vectors[slot] is None:
-        print(Fore.RED + "Vector not defined." + Style.RESET_ALL)
-    elif op == "2":
-        print(Fore.GREEN, vectors[slot].magnitude(), Style.RESET_ALL)
-    elif op == "3":
-        print(Fore.GREEN, vectors[slot].normalize(), Style.RESET_ALL)
-    elif op == "4":
+    while True:
         show_slots("Vectors", vectors, color=Fore.GREEN)
-        slot2 = choose_slot()
-        print(Fore.GREEN, vectors[slot].dot(vectors[slot2]), Style.RESET_ALL)
-    elif op == "5":
-        show_slots("Vectors", vectors, color=Fore.GREEN)
-        slot2 = choose_slot()
-        print(Fore.GREEN, vectors[slot].cross(vectors[slot2]), Style.RESET_ALL)
-    else:
-        print(Fore.RED + "Invalid choice" + Style.RESET_ALL)
-    pause()
+        slot = choose_slot()
+        print("1. Create / Replace  2. Magnitude  3. Normalize  4. Dot product  5. Cross product  6. Exit to Main Menu")
+        op = input("Operation: ")
+        if op == "6":
+            break
+        if op == "1":
+            vectors[slot] = create_vector()
+            print(Fore.GREEN + "Saved." + Style.RESET_ALL)
+        elif vectors[slot] is None:
+            print(Fore.RED + "Vector not defined." + Style.RESET_ALL)
+        elif op == "2":
+            print(Fore.GREEN, vectors[slot].magnitude(), Style.RESET_ALL)
+        elif op == "3":
+            print(Fore.GREEN, vectors[slot].normalize(), Style.RESET_ALL)
+        elif op == "4":
+            show_slots("Vectors", vectors, color=Fore.GREEN)
+            slot2 = choose_slot()
+            print(Fore.GREEN, vectors[slot].dot(vectors[slot2]), Style.RESET_ALL)
+        elif op == "5":
+            show_slots("Vectors", vectors, color=Fore.GREEN)
+            slot2 = choose_slot()
+            print(Fore.GREEN, vectors[slot].cross(vectors[slot2]), Style.RESET_ALL)
+        else:
+            print(Fore.RED + "Invalid choice" + Style.RESET_ALL)
+        pause()
 
 def choose_slot():
     print("1. A   2. B   3. C   4. D")
